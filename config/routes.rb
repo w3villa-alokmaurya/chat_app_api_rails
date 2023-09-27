@@ -5,5 +5,9 @@ Rails.application.routes.draw do
 
   }
   get "/users/profile", to: "user#index"
-  resources :message, only: [:index, :create]
+  get "/users", to: "user#all_users"
+  get "/users/:id", to: "user#show"
+  # resources :message, only: [:index, :create]
+  get "/messages/:reciever_id", to: "message#index"
+  post "/send_message", to: "message#create"
 end

@@ -2,7 +2,7 @@ class MessageController < ApplicationController
     before_action :authenticate_user!
 
     def index
-        reciever_id = params[:reciever_id]
+      reciever_id = params[:reciever_id]
       messages = Message.where(sender_id: current_user.id, reciever_id: reciever_id).or(Message.where(sender_id: reciever_id, reciever_id: current_user.id))
       render json: messages
     end

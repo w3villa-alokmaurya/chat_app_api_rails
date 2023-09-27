@@ -16,6 +16,13 @@ class Users::SessionsController < Devise::SessionsController
       }, status: :unauthorized
     end
   end
+
+  def failure
+    render json: {
+      error: "Invalid email or password",
+      status: false
+    }, status: :unauthorized
+  end
   
 
   def respond_to_on_destroy
